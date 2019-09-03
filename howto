@@ -1,0 +1,22 @@
+ANTONYM
+
+Copy the words from the pdf attached in the mail to a file name "test"
+
+RUN 
+
+# cat test|while read line; do echo $line|awk '{print $1, $2}'|while read a b ;do echo "[['$a', '$b']],"; done;done > out
+# sed -i ':a;N;$!ba;s/\n/ /g' out
+# cat test|while read line; do echo $line|awk '{print $1, $2}'|while read a b ;do echo "['$a', '$b'],"; done >> out1 ;done
+# sed -i ':a;N;$!ba;s/\n/ /g' out1
+
+COPY the contents of out in llist
+COPY the contents of out1 in nlist
+
+sed -e 's/\s\s*/\n/g' FILE --- TO put a newline after each space
+
+---------------------------
+Make a file for a antonym list
+
+Copy thr list of words in 2 rows into a file called ant
+$ cat ant|while read line; do one=$(echo $line|awk '{print $1}'); two=$(echo $line|awk '{print $2}'); echo "[['${one}', '${two}']],"; done|sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'  ---> This o/p needs to be added to llist
+$ cat ant|while read line; do one=$(echo $line|awk '{print $1}'); two=$(echo $line|awk '{print $2}'); echo "['${one}', '${two}'],"; done|sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'  ---> This o/p needs to be added to nlist

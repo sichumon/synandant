@@ -1,0 +1,5 @@
+
+read file into dictionary
+write errors with meanings to output file
+write time taken to fnish each test 
+write the success rate on each test

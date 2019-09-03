@@ -1,0 +1,29 @@
+#!/bin/bash
+# This was written to make a list for synonyms from a pdf which had the correct answers on the opposite side of the pdf 
+#  XQ   yQ  -- on page1
+#  yA   XA  -- on page2
+# I copied the entire pdf contents to a list and made a file first , this had 240 lines in it. 
+# As I had to deal with a bloack of 10 I did the following up to 240
+# sed -n '1,10p' syn2 > a
+# sed -n '11,20p' syn2 > b
+# sed -n '21,30p' syn2 > c
+# sed -n '31,40p' syn2 > d
+
+# Then I split each block into 2 set so that I could pick the answers
+# for XX in {a..x}; do  sed -n '1,5p' $XX > ${XX}_1; sed -n '6,10p' $XX > ${XX}_2; done
+
+# Then the following was run to extract 
+
+
+for XX in a b
+ do  
+for line in {1..5}
+ do 
+W1=`sed "${line}q;d" ${XX}_1|awk '{print $1}'`
+W2=`sed "${line}q;d" ${XX}_1|awk '{print $2}'`
+W3=`sed "${line}q;d" ${XX}_2|awk '{print $1}'`
+W4=`sed "${line}q;d" ${XX}_2|awk '{print $2}'`
+ echo "$W1  $W4"
+ echo "$W2  $W3"
+ done
+ done

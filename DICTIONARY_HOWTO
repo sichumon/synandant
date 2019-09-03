@@ -1,0 +1,10 @@
+Dictionary from cli
+
+curl dict://dict.org/d:<WORD>
+
+OR
+
+alias def="sdcv -u WordNet" OR alias def="sdcv -u 'Merrian Webster 10th dictionary'"
+
+def quick
+
